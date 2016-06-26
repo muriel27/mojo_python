@@ -6,12 +6,17 @@ import operator
 import random
 
 class Category(Enum):
+	People = 'people'
 	Face ='face'
-	CatFace ='face'
-	MonkeyFace = 'face'
+	CatFace ='catFace'
+	MonkeyFace = 'monkeyFace'
 	Transport = 'transport'
 	Symbol = 'symbol'
 	Animal = 'animal'
+	Others = 'others'
+	Plant = 'plant'
+	Fruit = 'fruit'
+	Food = 'food'
 
 class Emoji(Enum):
 	Grin = ('\U0001F601', Category.Face.name, ['happy','joy','grad'])
@@ -57,9 +62,9 @@ class Emoji(Enum):
 	KissCat = ('\U0001F63D', Category.CatFace.name, ['none'])
 	PoutCat = ('\U0001F63E', Category.CatFace.name, ['none'])
 	SadCryCat = ('\U0001F63F', Category.CatFace.name, ['none'])	
-	NoGoodGesture = ('\U0001F645', Category.Face.name, ['object','deny'])
-	OkGesture = ('\U0001F646', Category.Face.name, ['agree','yes'])
-	Bowing = ('\U0001F647', Category.Face.name, ['kneel'])
+	NoGoodGesture = ('\U0001F645', Category.People.name, ['object','deny'])
+	OkGesture = ('\U0001F646', Category.People.name, ['agree','yes'])
+	Bowing = ('\U0001F647', Category.People.name, ['kneel'])
 	SeeNoEvilMonkey = ('\U0001F648', Category.MonkeyFace.name, ['none'])
 	HearNoEvilMonkey = ('\U0001F649', Category.MonkeyFace.name, ['none'])
 	SpeakNoEvilMonkey = ('\U0001F64A', Category.MonkeyFace.name, ['none'])
@@ -119,14 +124,77 @@ class Emoji(Enum):
 	Dog = ('\U0001F415', Category.Animal.name, ['none'])
 	Pig = ('\U0001F416', Category.Animal.name, ['none'])
 	Camel = ('\U0001F42A', Category.Animal.name, ['none'])
+	Watch = ('\U0000231A', Category.Others.name, ['none'])
+	Hourglass = ('\U0000231B', Category.Others.name, ['none'])
+	AlarmClock = ('\U000023F0', Category.Others.name, ['none'])
+	Cloud = ('\U00002600', Category.Others.name, ['none'])
+	Sun = ('\U00002601', Category.Others.name, ['none'])
+	Telephone = ('\U0000260E', Category.Others.name, ['none'])
+	Umbrella = ('\U00002614', Category.Others.name, ['none'])
+	Cafe = ('\U00002615', Category.Others.name, ['coffee','beverage','hot'])
+	WarningSign = ('\U000026A0', Category.Symbol.name, ['notice'])
+	HighVoltageSign = ('\U000026A1', Category.Symbol.name, ['lightning'])
+	Soccer = ('\U000026BD', Category.Others.name, ['football'])
+	Snowman = ('\U000026C4', Category.Others.name, ['none'])
+	Church = ('\U000026EA', Category.Others.name, ['none'])
+	Sailboat = ('\U000026F5', Category.Others.name, ['none'])
+	FuelPump = ('\U000026FD', Category.Others.name, ['none'])
+	Star = ('\U00002B50', Category.Others.name, ['none'])
+	Moon = ('\U0001F319', Category.Others.name, ['none'])
+
+	Seed = ('\U0001F331', Category.Plant.name, ['none'])
+	Palm = ('\U0001F334', Category.Others.name, ['tree'])
+	Cactus = ('\U0001F335', Category.Others.name, ['none'])
+	Tulip = ('\U0001F337', Category.Others.name, ['none'])
+	CherryBlossom = ('\U0001F338', Category.Others.name, ['none'])
+	Rose = ('\U0001F339', Category.Others.name, ['none'])
+	Hibiscus = ('\U0001F33A', Category.Others.name, ['none'])
+	Sunflower = ('\U0001F33B', Category.Others.name, ['none'])
+	Blossom = ('\U0001F33C', Category.Others.name, ['none'])
+	Maize = ('\U0001F33D', Category.Others.name, ['corn'])
+	Rice = ('\U0001F33E', Category.Others.name, ['none'])
+	Herb = ('\U0001F33F', Category.Others.name, ['none'])
+	FourLeafClover = ('\U0001F340', Category.Others.name, ['none'])
+	Maple = ('\U0001F341', Category.Others.name, ['leaf'])
+	FallenLeaf = ('\U0001F342', Category.Others.name, ['none'])
+	Mushroom = ('\U0001F344', Category.Others.name, ['none'])
+	Tomato = ('\U0001F345', Category.Others.name, ['none'])
+	Aubergine = ('\U0001F346', Category.Others.name, ['none'])
+
+	Grapes = ('\U0001F347', Category.Fruit.name, ['none'])
+	Melon = ('\U0001F348', Category.Fruit.name, ['none'])
+	Watermelon = ('\U0001F349', Category.Fruit.name, ['none'])
+	Tangerine = ('\U0001F34A', Category.Fruit.name, ['none'])
+	Banana = ('\U0001F34C', Category.Fruit.name, ['none'])
+	Pineapple = ('\U0001F34D', Category.Fruit.name, ['none'])
+	RedApple = ('\U0001F34E', Category.Fruit.name, ['none'])
+	GreenApple = ('\U0001F34F', Category.Fruit.name, ['none'])
+	Peach = ('\U0001F351', Category.Fruit.name, ['none'])
+	Cherries = ('\U0001F352', Category.Fruit.name, ['none'])
+	Strawberry = ('\U0001F353', Category.Fruit.name, ['none'])
+
+	Hamburger = ('\U0001F354', Category.Food.name, ['none'])
+	Pizza = ('\U0001F355', Category.Food.name, ['none'])
+	Bone = ('\U0001F356', Category.Food.name, ['meat'])
+	PoultryLeg = ('\U0001F357', Category.Food.name, ['none'])
+	RiceCracker = ('\U0001F358', Category.Food.name, ['none'])
+	RiceBall = ('\U0001F359', Category.Food.name, ['none'])
+	CookedRice = ('\U0001F35A', Category.Food.name, ['none'])
+	CurryRice = ('\U0001F35B', Category.Food.name, ['none'])
+	SteamingBowl = ('\U0001F35C', Category.Food.name, ['none'])
+	Spaghetti = ('\U0001F35D', Category.Food.name, ['none'])
+	Bread = ('\U0001F35E', Category.Food.name, ['none'])
 
 
+
+
+#transfer enter words to Emoji
 def to_emoji(enter):
 
 	flag = False
 	for emoji in Emoji:
 		#find the corresponding word at Emoji.name
-		if(enter.lower().find(emoji.name.lower()) >= 0 or emoji.name.lower().find(enter.lower()) >= 0):
+		if(enter.find(emoji.name.lower()) >= 0 or emoji.name.lower().find(enter) >= 0):
 			flag = True
 			print((emoji.value)[0])
 			break
@@ -134,7 +202,7 @@ def to_emoji(enter):
 		#find the corresponding word at Emoji.value[2] which is extra description
 		emotion_tup = emoji.value
 		for description in emotion_tup[2]:
-			if(enter.lower().find(description) >= 0 or description.find(enter.lower()) >=0):
+			if(enter.find(description) >= 0 or description.find(enter) >=0):
 				flag = True
 				print((emoji.value)[0])
 				break
@@ -159,17 +227,19 @@ def searchCategory(enter):
 	emoji_list = []
 	for emoji in Emoji:
 		category=(emoji.value)[1]
-		if(category.lower().find(enter.lower()) >=0):
+		if(category.lower().find(enter) >=0):
 			emoji_list.append((emoji.value)[0])
+	print(emoji_list)		
 
 	return emoji_list	
 									
 
 while True:
-	enter = input("Please enter here :")
+	enter = input("Please key in here :")
 	if enter=='':
 		break
 	to_emoji(enter.lower())
+	print('\U0000231A')
 
 
 
