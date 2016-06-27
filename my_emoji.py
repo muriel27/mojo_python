@@ -417,7 +417,7 @@ def to_emoji(enter):
 			flag =True
 			print(random.choice(emoji_list))
 
-	#if no corresponding emoji can be found
+	# default emoji if no corresponding emoji can be found
 	if flag is not True:
 		print('\U0001F631')
 
